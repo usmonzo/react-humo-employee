@@ -1,24 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
+import { Route, Routes } from 'react-router-dom';
+import { Suspense } from 'react';
+import SuspenceFallback from './utils/SuspenceFallback';
+import ClientsCheckPage from './pages/ClientsCheckPage';
+import IdentificationHOPage from './pages/IdentificationHOPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Suspense fallback={<SuspenceFallback />}>
+        <Routes>
+          <Route path="/" element={<LoginPage />}></Route>
+          {/* <Route element={<PrivateRoute />}> */}
+          <Route
+            path="main"
+            element={
+              // <PrivateRoute>
+              <MainPage />
+              // </PrivateRoute>
+            }
+          />
+          <Route
+            path="/identification"
+            element={
+              // <PrivateRoute>
+              <IdentificationHOPage />
+              // </PrivateRoute>
+            }
+          />
+          <Route
+            path="/client_check"
+            element={
+              // <PrivateRoute>
+              <ClientsCheckPage />
+              // </PrivateRoute>
+            }
+          />
+        </Routes>
+      </Suspense>
+    </>
   );
 }
 
