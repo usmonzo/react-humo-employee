@@ -1,32 +1,32 @@
+import { Button, Input, Select } from 'antd';
 import { Link } from 'react-scroll';
 import styled, { css } from 'styled-components';
-import { Button, Input, Select } from '@chakra-ui/react';
 
 const faqCSS = css`
   flex-direction: column;
+  width: 100%;
 `;
 
 export const FormContainer = styled.div`
   background: #edeef0;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 `;
 
 export const FormContent = styled.div`
-  min-height: 84vh;
-  max-width: 585px;
+  min-height: 100vh;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   margin: 0 auto;
   padding: 40px 5px;
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
 `;
 export const FormHeadline = styled.h3`
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 21px;
   line-height: 28px;
   letter-spacing: -0.006em;
   color: rgba(0, 0, 0, 0.87);
@@ -75,6 +75,15 @@ export const HideBlock7 = styled.div`
   display: ${({ show7 }) => (!show7 ? 'none' : 'flex')};
   ${faqCSS}
 `;
+export const HideBlock8 = styled.div`
+  display: ${({ show8 }) => (!show8 ? 'none' : 'flex')};
+  ${faqCSS}
+`;
+export const SRHideBlock = styled.div`
+  display: ${({ showSecRecommender }) =>
+    !showSecRecommender ? 'none' : 'flex'};
+  ${faqCSS}
+`;
 
 export const WhiteContainer = styled.div`
   background: #ffffff;
@@ -82,17 +91,17 @@ export const WhiteContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 24px;
-  max-width: 580px;
+  padding: 23px 30px;
+  max-width: 630px;
   width: 100%;
   margin-bottom: 30px;
 `;
 export const FormInput = styled(Input)`
-  gap: 12px;
-  width: 100%;
+  /* gap: 12px; */
+  /* width: 100%; */
   height: 40px;
-  background: #ffffff;
-  border: 2px solid #e0e0e0;
+  /* background: #ffffff; */
+  /* border: 2px solid #e0e0e0; */
   border-radius: 8px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -104,11 +113,12 @@ export const FormInput = styled(Input)`
   max-width: 532px;
 `;
 export const FormSelect = styled(Select)`
-  gap: 12px;
+  /* gap: 12px; */
+  /* max-width: 600px; */
   width: 100%;
   height: 40px;
   background: #ffffff;
-  border: 2px solid #e0e0e0;
+  /* border: 2px solid #e0e0e0; */
   border-radius: 8px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
@@ -131,7 +141,8 @@ export const FormLabel = styled.label`
   color: rgba(0, 0, 0, 0.38);
 `;
 export const VerticalGroupClick = styled.div`
-  padding: 0 5px;
+  /* margin-bottom: 10px; */
+
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -140,23 +151,21 @@ export const VerticalGroupClick = styled.div`
   cursor: pointer;
 `;
 export const Horizontal = styled.div`
+  width: 100%;
   padding: 10px 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  /* align-items: center; */
+  /* justify-content: space-between; */
 
   h1 {
     font-weight: 600;
     font-size: 28px;
     line-height: 36px;
-    display: flex;
-    align-items: center;
     letter-spacing: -0.005em;
     color: rgba(0, 0, 0, 0.87);
   }
 `;
 export const Vertical = styled.div`
-  max-width: 532px;
   width: 100%;
   gap: 5px;
   display: flex;
@@ -176,14 +185,24 @@ export const VerticalBtns = styled.div`
   padding: 0 7px;
 `;
 export const GrayBlock = styled.div`
-  justify-content: space-between;
-  display: flex;
-  flex-direction: row;
-  padding: 12px 16px;
-  width: 532px;
+  padding: 12px;
+  max-width: 182px;
+  max-height: 200px;
+  width: 100%;
+  height: 100%;
   background: #f5f5f5;
-
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  div {
+    margin-bottom: 10px;
+    width: 160px;
+    height: 150px;
+    border-radius: 12px;
+    background-color: #ff6200;
+  }
 `;
 export const PrimaryText = styled.h3`
   font-family: 'Inter', sans-serif;
@@ -284,3 +303,89 @@ export const GrayLine = styled.div`
   display: flex;
   border-bottom: 1px solid #eeeeee;
 `;
+export const WhiteBox = styled.div`
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  max-width: 630px;
+  width: 100%;
+  padding: 25px 35px;
+  border-radius: 12px;
+  gap: 16px;
+  margin-bottom: 20px;
+`;
+export const BorderedContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  padding: 12px;
+`;
+export const RadioContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid
+    ${({ radioValue }) => (radioValue === '1' ? '#ff6200' : '#eeeeee')};
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+`;
+export const RadioContainer2 = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid
+    ${({ radioValue }) => (radioValue === '2' ? '#ff6200' : '#eeeeee')};
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 20px;
+`;
+
+export const TextHorizontal = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+//typograsphy
+//typograsphy
+
+export const StaticPrimaryText = styled.p`
+  max-width: 280px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
+  color: rgba(0, 0, 0, 0.87);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+export const StaticSecondaryText = styled.p`
+  max-width: 280px;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.006em;
+  color: rgba(0, 0, 0, 0.87);
+`;
+export const WhiteBoxHeadline = styled.h3`
+  font-weight: 500;
+  font-size: 21px;
+  margin-bottom: 10px;
+`;
+export const GrayText = styled.p`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.006em;
+  color: rgba(0, 0, 0, 0.6);
+`;
+export const FourthStepContainer = styled.div``;

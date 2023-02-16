@@ -31,8 +31,9 @@ export const ProcessingNavigationH1 = styled.h1`
   align-items: center;
   letter-spacing: -0.006em;
   color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
 `;
-export const Group = styled(Link)`
+export const Group = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;

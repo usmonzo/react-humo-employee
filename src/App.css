@@ -2,4 +2,24 @@
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 15px;
+  font-family: 'Inter', sans-serif;
+}
+
+hr {
+  color: #eeeeee;
+  border: 1px solid #eeeeee;
+}
+
+.ant-modal-close-x svg {
+  width: 30px;
+  height: 25px;
+}
+
+.ant-modal-close {
+  border-radius: 50%;
+  width: 0px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

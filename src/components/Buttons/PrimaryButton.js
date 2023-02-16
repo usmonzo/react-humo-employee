@@ -17,11 +17,14 @@ export const PrimaryBtn = styled.button`
   border: none;
   cursor: pointer;
   box-shadow: RGBA(255, 120, 10, 0.1) 0 10px 7px 0;
+  text-decoration: none;
+  color: white;
 
   :hover {
     box-shadow: rgba(255, 115, 0, 0.5) 0 5px 15px 0;
     //background-color: #cd4d15;
     transition: all 0.2s ease-out;
+    color: #ffffff;
   }
 
   :active {

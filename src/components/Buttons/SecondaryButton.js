@@ -13,6 +13,7 @@ export const SecondaryBtn = styled.button`
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
+  text-decoration: none;
   cursor: pointer;
   box-shadow: rgba(100, 100, 111, 0.07) 0 10px 7px 0;
 

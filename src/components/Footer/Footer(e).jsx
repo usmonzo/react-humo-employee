@@ -16,6 +16,11 @@ const FooterContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+
+  @media screen and (max-width: 768px) {
+    transition: 0.4s all ease-in-out;
+    margin-bottom: -130px;
+  }
   @media screen and (max-width: 550px) {
     height: 80px;
   }

@@ -2,11 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { BaseUrl } from '../../baseUrl';
 import { apiUrl } from '../../utils/apiRoutes';
 import { Axios, setRefreshToken, setToken } from '../../utils/axios';
-import { setBtnLoading } from './btnLoading';
-
-// const getToken = () => {
-//     return localStorage.getItem('access-token')
-// }
 
 const initialState = {
   login: null,

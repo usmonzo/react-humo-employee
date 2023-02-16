@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { getToken } from '../../utils/axios';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   LoginBoxContainer,
   LoginBoxContent,
@@ -6,29 +10,18 @@ import {
   LoginBoxFormLabel,
   LoginBoxHeadline,
   LoginBoxInput,
-  LoginBoxLink,
   LoginBoxLogo,
   LoginBoxParagraph,
 } from './LoginBoxElements';
 import loginLogo from '../../assets/LoginLogo.svg';
-import {
-  Button,
-  InputGroup,
-  InputLeftAddon,
-  InputRightElement,
-} from '@chakra-ui/react';
-import { useState } from 'react';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { useDispatch, useSelector } from 'react-redux';
+// import { InputGroup, InputLeftAddon } from '@chakra-ui/react';
 import {
   authBtnLoading,
   errorAuth,
   handleLogin,
   setUser,
 } from '../../store/slices/userSlice';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { getToken } from '../../utils/axios';
+import { PrimaryBtn } from '../Buttons/PrimaryButton';
 
 export default function LoginBox() {
   const [show, setShow] = useState(false);
@@ -82,34 +75,26 @@ export default function LoginBox() {
           </LoginBoxParagraph>
           <LoginBoxForm onKeyPress={(e) => handleEnter(e)}>
             <LoginBoxFormLabel>Номер телефона</LoginBoxFormLabel>
-            <InputGroup>
-              <InputLeftAddon
-                children="+992"
-                fontSize={16}
-                fontWeight="500"
-                p={3}
-                borderColor={errorRequest ? 'red' : '#e7edf3'}
-                bgColor={errorRequest ? '#FFECF0' : ''}
-                color={errorRequest ? 'red' : ''}
-              />
-              <LoginBoxInput
-                borderColor={!errorRequest ? '#e7edf3' : '#F94A43'}
-                _focus={{
-                  borderColor: 'none',
-                  outline: 'none',
-                }}
-                focusBorderColor={!errorRequest ? '' : '#F94A43'}
-                _active={{ outline: !errorRequest ? '' : '#F94A43' }}
-                _hover={{}}
-                name="login"
-                isRequired
-                type="text"
-                value={login}
-                onChange={handleChange}
-                maxWidth="420px"
-                // placeholder="Логин"
-              />
-            </InputGroup>
+
+            <LoginBoxInput
+              size="large"
+              addonBefore="+992"
+              borderColor={!errorRequest ? '#e7edf3' : '#F94A43'}
+              _focus={{
+                borderColor: 'none',
+                outline: 'none',
+              }}
+              focusBorderColor={!errorRequest ? '' : '#F94A43'}
+              _active={{ outline: !errorRequest ? '' : '#F94A43' }}
+              _hover={{}}
+              name="login"
+              isRequired
+              type="text"
+              value={login}
+              onChange={handleChange}
+              maxWidth="420px"
+              // placeholder="Логин"
+            />
             {/* <LoginBoxFormLabel>Пароль</LoginBoxFormLabel>
             <InputGroup size="md">
               <LoginBoxInput
@@ -152,11 +137,11 @@ export default function LoginBox() {
               </LoginBoxFormLabel>
             ) : null} */}
           </LoginBoxForm>
-          <LoginBoxFormButton
+          <PrimaryBtn
             borderRadius={30}
             backgroundColor="#ff6200"
             p={6}
-            _hover={{}}
+            style={{ marginTop: '15px' }}
             isLoading={authLoading}
             onClick={() => {
               handleSubmit();
@@ -165,7 +150,7 @@ export default function LoginBox() {
             }}
           >
             Продолжить
-          </LoginBoxFormButton>
+          </PrimaryBtn>
         </LoginBoxContent>
       </LoginBoxContainer>
     </>

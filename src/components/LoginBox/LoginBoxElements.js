@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Button, Input } from '@chakra-ui/react';
+import { Button, Input } from 'antd';
 
 export const LoginBoxContainer = styled.div`
   display: flex;
@@ -10,6 +10,9 @@ export const LoginBoxContainer = styled.div`
   justify-content: center;
   padding: 56px;
 
+  @media screen and (max-width: 768px) {
+    height: 100vh;
+  }
   @media screen and (max-width: 600px) {
     padding: 32px;
   }
@@ -37,8 +40,10 @@ export const LoginBoxContent = styled.div`
 `;
 
 export const LoginBoxLogo = styled.img`
-  width: 70px;
-  height: 70px;
+  width: 85px;
+  height: 85px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 100%;
 `;
 
 export const LoginBoxHeadline = styled.h1`
@@ -94,7 +99,7 @@ export const LoginBoxInput = styled(Input)`
   //text-transform: capitalize;
   box-sizing: border-box;
   padding: 8px 12px;
-  max-width: 440px;
+  /* max-width: 450px; */
   width: 100%;
   height: 40px;
   background: #ffffff;
@@ -108,6 +113,7 @@ export const LoginBoxInput = styled(Input)`
 `;
 
 export const LoginBoxFormButton = styled(Button)`
+  height: 50px;
   margin-top: 20px;
   width: 100%;
   display: flex;

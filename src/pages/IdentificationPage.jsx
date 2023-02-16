@@ -1,15 +1,13 @@
 import Navbar from '../components/Navbar/Navbar(e)';
 import IdentificationBody from '../components/IdentificationComponents/IdentificationBody';
-import Footer from '../components/Footer/Footer(e)';
 
-const IdentificationHOPage = () => {
+const IdentificationPage = () => {
   return (
     <>
       <Navbar />
       <IdentificationBody />
-      {/* <Footer /> */}
     </>
   );
 };
 
-export default IdentificationHOPage;
+export default IdentificationPage;

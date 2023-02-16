@@ -1,5 +1,5 @@
+import { Button } from 'antd';
 import styled from 'styled-components';
-import { Button } from '@chakra-ui/react';
 
 export const MainBodySection = styled.section`
   display: flex;

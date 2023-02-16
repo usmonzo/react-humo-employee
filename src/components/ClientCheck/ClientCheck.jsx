@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Radio, RadioGroup } from '@chakra-ui/react';
+import { Link, useNavigate } from 'react-router-dom';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import { PrimaryBtn } from '../Buttons/PrimaryButton';
 import {
@@ -10,6 +9,7 @@ import {
   GrayText,
   Horizontal,
   PrimaryText,
+  RadioChecker,
   RadioContainer,
   RadioContainer2,
   SecondaryText,
@@ -18,9 +18,11 @@ import {
   WhiteBox,
   WhiteBoxHeadline,
 } from './ClientCheckElements';
+import { Button, Radio } from 'antd';
 
 const ClientCheck = () => {
-  const [radioValue, setRadioValue] = useState('1');
+  const [radioValue, setRadioValue] = useState(1);
+  const navigate = useNavigate();
   console.log(radioValue);
   return (
     <ClientCheckContainer>
@@ -31,16 +33,17 @@ const ClientCheck = () => {
             justifyContent: 'flex-start',
             gap: '30px',
             marginBottom: '26px',
+            cursor: 'pointer',
           }}
+          onClick={() => navigate(-1)}
         >
           <Button
-            p={0}
-            w="50px"
-            h="50px"
-            borderRadius={100}
-            justifySelf="flex-start"
-            backgroundColor="#FAFAFA"
-            _hover={{ backgroundColor: '#eaeaea' }}
+            style={{
+              borderRadius: '50%',
+              height: '60px',
+              display: 'flex',
+              alignItems: 'center',
+            }}
           >
             <MdKeyboardArrowLeft color="black" size={30} />
           </Button>
@@ -97,7 +100,7 @@ const ClientCheck = () => {
               </Horizontal>
             </BorderedContainer>
             <BorderedContainer>
-              <Horizontal>
+              <Horizontal style={{ justifyContent: 'space-between' }}>
                 <PrimaryText>
                   <svg
                     width="32"
@@ -113,8 +116,8 @@ const ClientCheck = () => {
                       fill="url(#paint0_linear_2576_49196)"
                     />
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M8.89334 9.32043H23.1069C23.7352 9.32043 24.3377 9.55145 24.782 9.96267C25.2263 10.3739 25.4759 10.9316 25.4759 11.5132V12.5312H6.52441V11.5132C6.52441 10.9316 6.774 10.3739 7.21826 9.96267C7.66252 9.55145 8.26506 9.32043 8.89334 9.32043ZM7.21826 22.4611C6.774 22.0499 6.52441 21.4921 6.52441 20.9106V14.8806H25.4759V20.9106C25.4759 21.4921 25.2263 22.0499 24.782 22.4611C24.3377 22.8723 23.7352 23.1033 23.1069 23.1033H8.89334C8.26506 23.1033 7.66252 22.8723 7.21826 22.4611ZM9.68807 17.1041C9.45007 17.3244 9.31637 17.6232 9.31637 17.9347V18.7179C9.31637 19.0294 9.45007 19.3282 9.68807 19.5485C9.92607 19.7688 10.2489 19.8925 10.5854 19.8925H12.6159C12.9525 19.8925 13.2753 19.7688 13.5133 19.5485C13.7513 19.3282 13.885 19.0294 13.885 18.7179V17.9347C13.885 17.6232 13.7513 17.3244 13.5133 17.1041C13.2753 16.8838 12.9525 16.7601 12.6159 16.7601H10.5854C10.2489 16.7601 9.92607 16.8838 9.68807 17.1041ZM18.5852 18.7667C18.5847 20.2213 19.7311 21.3811 21.1698 21.3811C22.5924 21.3811 23.7532 20.2202 23.7538 18.7973C23.7543 17.3799 22.5924 16.213 21.1799 16.2125C19.7569 16.212 18.5857 17.3649 18.5852 18.7667ZM20.5104 20.3806C20.4989 20.3815 20.4853 20.3826 20.4687 20.3843C20.8486 20.143 21.05 19.7996 21.1961 19.4156C21.2152 19.3655 21.2336 19.3151 21.252 19.2647C21.2985 19.1374 21.345 19.0101 21.4026 18.888C21.5793 18.5132 21.8597 18.2623 22.2828 18.1984C22.353 18.1877 22.4236 18.1904 22.4942 18.1937C22.4995 18.194 22.5052 18.1959 22.511 18.1978C22.5245 18.2024 22.5382 18.2071 22.5473 18.1903C22.5555 18.1751 22.5464 18.1609 22.5378 18.1477C22.5352 18.1437 22.5327 18.1397 22.5307 18.1359C22.4476 17.976 22.3103 17.8963 22.135 17.8872C22.0654 17.8834 22.0288 17.8635 21.9941 17.7997C21.8772 17.5855 21.5601 17.5061 21.3121 17.6242C21.2593 17.6491 21.2081 17.6774 21.1569 17.7057C21.1068 17.7333 21.0567 17.7609 21.0051 17.7856C20.676 17.943 20.4582 17.917 20.1745 17.6919C20.1402 17.8065 20.1982 17.9834 20.3169 18.0984C20.5071 18.2827 20.7301 18.2942 20.9673 18.2054C20.9801 18.2294 20.9698 18.2479 20.9603 18.2648C20.9578 18.2694 20.9552 18.2739 20.9533 18.2784C20.7585 18.7264 20.463 19.0937 20.0667 19.3803C20.0207 19.4136 19.9874 19.4153 19.9384 19.3877C19.4409 19.1072 19.1753 18.6748 19.0969 18.1172C19.0922 18.0838 19.1023 18.0553 19.1142 18.0273C19.4527 17.2198 20.0501 16.7283 20.922 16.6319C22.1092 16.5005 23.1202 17.2891 23.3254 18.47C23.3456 18.59 23.3538 18.7116 23.3499 18.8332C23.3496 18.8612 23.34 18.8884 23.3227 18.9104C22.947 19.4144 22.4473 19.7066 21.8238 19.7869C21.8144 19.7881 21.8048 19.79 21.7952 19.7919C21.7736 19.7962 21.7519 19.8004 21.7315 19.7968C21.5299 19.7614 21.403 19.8694 21.2699 20.0025C21.075 20.1976 20.8268 20.3104 20.5584 20.3747C20.5449 20.378 20.5307 20.3791 20.5104 20.3806Z"
                       fill="white"
                     />
@@ -127,15 +130,17 @@ const ClientCheck = () => {
                         y2="32"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop offset="0.133058" stop-color="#FC6B2F" />
-                        <stop offset="0.454969" stop-color="#FF6200" />
-                        <stop offset="1" stop-color="#FF6200" />
+                        <stop offset="0.133058" stopColor="#FC6B2F" />
+                        <stop offset="0.454969" stopColor="#FF6200" />
+                        <stop offset="1" stopColor="#FF6200" />
                       </linearGradient>
                     </defs>
                   </svg>
                   ОРЗУ
                 </PrimaryText>
-                <GrayText>Лимит: 30 000</GrayText>
+                <GrayText style={{ maxWidth: '122px', width: '100%' }}>
+                  Лимит: 30 000
+                </GrayText>
               </Horizontal>
             </BorderedContainer>
           </WhiteBox>
@@ -143,69 +148,41 @@ const ClientCheck = () => {
             <WhiteBoxHeadline>
               Выберите тип заявки для подключения:
             </WhiteBoxHeadline>
-
-            <RadioGroup
-              gap={10}
-              onChange={(e) => {
-                setRadioValue(e);
-                console.log(e);
-              }}
-              defaultValue={radioValue}
+            <Radio.Group
+              onChange={(e) => setRadioValue(e.target.value)}
+              value={radioValue}
             >
               <RadioContainer radioValue={radioValue}>
-                <Radio
-                  _checked={{
-                    outline: '2px solid #ff6200',
-                    border: '4px solid #ffffff',
-                    backgroundColor: '#ff6200',
-                  }}
-                  border="2px solid #ff6200"
-                  display="flex"
-                  flexDirection={'row-reverse'}
-                  justifyContent="space-between"
-                  w="100%"
-                  h="100%"
-                  name="orzu"
-                  size="lg"
-                  value="1"
-                  checked={radioValue === '1'}
-                >
-                  <SecondaryText style={{ maxWidth: '300px', width: '100%' }}>
+                <RadioChecker name="orzu" value={1} checked={radioValue === 1}>
+                  <SecondaryText
+                    style={{
+                      fontWeight: '500',
+                    }}
+                  >
                     Увеличение лимита ОРЗУ
                   </SecondaryText>
-                </Radio>
+                </RadioChecker>
               </RadioContainer>
               <RadioContainer2 radioValue={radioValue}>
-                <Radio
-                  _checked={{
-                    outline: '2px solid #ff6200',
-                    border: '4px solid #ffffff',
-                    backgroundColor: '#ff6200',
-                  }}
-                  border="2px solid #ff6200"
-                  display="flex"
-                  flexDirection={'row-reverse'}
-                  justifyContent="space-between"
-                  w="100%"
-                  h="100%"
-                  value="2"
-                  checked={radioValue === '2'}
+                <RadioChecker
+                  value={2}
+                  checked={radioValue === 2}
                   name="standart"
-                  size="lg"
+                  size="large"
                 >
                   <SecondaryText
                     style={{
                       maxWidth: '330px',
-                      width: '100%',
+                      fontWeight: '500',
                     }}
                   >
                     Оформление стандарт/проект кредита
                   </SecondaryText>
-                </Radio>
+                </RadioChecker>
               </RadioContainer2>
-            </RadioGroup>
+            </Radio.Group>
           </WhiteBox>
-          <PrimaryBtn as={Link} to="/identification">
+          <PrimaryBtn as={Link} to="identification">
             Далее
           </PrimaryBtn>
         </Vertical>

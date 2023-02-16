@@ -1,3 +1,4 @@
+import { Radio } from 'antd';
 import styled from 'styled-components';
 
 // Containers
@@ -36,9 +37,9 @@ export const BorderedContainer = styled.div`
 `;
 export const RadioContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   border: 2px solid
-    ${({ radioValue }) => (radioValue === '1' ? '#ff6200' : '#eeeeee')};
+    ${({ radioValue }) => (radioValue === 1 ? '#ff6200' : '#eeeeee')};
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 20px;
@@ -48,7 +49,7 @@ export const RadioContainer2 = styled.div`
   justify-content: space-between;
   align-items: center;
   border: 2px solid
-    ${({ radioValue }) => (radioValue === '2' ? '#ff6200' : '#eeeeee')};
+    ${({ radioValue }) => (radioValue === 2 ? '#ff6200' : '#eeeeee')};
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 20px;
@@ -92,7 +93,7 @@ export const Vertical = styled.div`
 //typograsphy
 //typograsphy
 export const PrimaryText = styled.p`
-  max-width: 280px;
+  /* max-width: 280px; */
   width: 100%;
   font-weight: 600;
   font-size: 16px;
@@ -127,4 +128,22 @@ export const GrayText = styled.p`
   line-height: 20px;
   letter-spacing: -0.006em;
   color: rgba(0, 0, 0, 0.6);
+`;
+
+export const RadioChecker = styled(Radio)`
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    width: 100%;
+    p {
+      width: 400px;
+    }
+  }
+  span.ant-radio {
+    width: 10px;
+    border-color: red !important ;
+  }
 `;

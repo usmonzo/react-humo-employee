@@ -9,8 +9,8 @@ import {
 // import wait from '../../assets/wait.svg';
 // import emptyFile from '../../assets/file-search-alt.png';
 // import { useEffect } from 'react';
-import { Button } from '@chakra-ui/react';
 import { BsArrowRightShort } from 'react-icons/bs';
+import { Button } from 'antd';
 
 const WebApplicationsTable = () => {
   // const dispatch = useDispatch();

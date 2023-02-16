@@ -1,4 +1,13 @@
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { PrimaryBtn } from '../Buttons/PrimaryButton';
+import { SecondaryBtn } from '../Buttons/SecondaryButton';
+import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
+import { RiArrowRightSLine } from 'react-icons/ri';
+import { InnCheckContent, InnHorizontal } from '../InnCheckModal/innCheckModal';
+import WebApplicationsTable from './RequestBoxTable/WebApplicationsTable';
+import delay from '../../assets/delay.svg';
+
 import {
   Horizontal,
   MainBodySection,
@@ -7,9 +16,6 @@ import {
   RequestImage,
   RequestInfoGroup,
 } from '../RequestBox/ToProcessing';
-import { PrimaryBtn } from '../Buttons/PrimaryButton';
-import { BsArrowLeftShort, BsArrowRightShort } from 'react-icons/bs';
-import delay from '../../assets/delay.svg';
 import {
   ButtonLink,
   Group,
@@ -17,33 +23,29 @@ import {
   ProcessingNavigationContent,
   ProcessingNavigationH1,
 } from './ProcessingNavigation';
-import { SecondaryBtn } from '../Buttons/SecondaryButton';
-import { RiArrowRightSLine } from 'react-icons/ri';
 import {
   NavigationContainer,
   NavigationContent,
   NavigationH1,
 } from './WebRequestsNavigation';
-import {
-  Button,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  useDisclosure,
-} from '@chakra-ui/react';
-import WebApplicationsTable from './RequestBoxTable/WebApplicationsTable';
-import { InnCheckContent, InnHorizontal } from '../InnCheck/innCheckModal';
-import { Link } from 'react-router-dom';
+import { Button, Input, Modal } from 'antd';
+
 // import refresh from '../../assets/refresh.svg';
 
 export default function RequestBox() {
   const [showWebRequests, setShowWebRequests] = useState(true);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       {showWebRequests ? (
@@ -56,7 +58,7 @@ export default function RequestBox() {
               <Horizontal>
                 <ButtonLink>
                   <PrimaryBtn
-                    onClick={onOpen}
+                    onClick={showModal}
                     style={{
                       padding: '14px 30px',
                       maxWidth: '250px',
@@ -447,13 +449,13 @@ export default function RequestBox() {
         </>
       )}
       <>
-        <Modal isOpen={isOpen} onClose={onClose} size={'xl'} isCentered>
+        {/* <Modal isOpen={isOpen} onClose={onClose} size={'xl'} isCentered>
           <ModalOverlay />
           <ModalContent bgColor="transparent">
             <InnCheckContent>
               <ModalBody>
                 <InnHorizontal>
-                  {/* <Button
+                  <Button
                     w="55px"
                     h="55px"
                     borderRadius={100}
@@ -464,7 +466,7 @@ export default function RequestBox() {
                     <div>
                       <BsArrowLeftShort color="black" size="28px" />
                     </div>
-                  </Button> */}
+                  </Button>
                   <h1>Проверка клиента</h1>
                 </InnHorizontal>
                 <p>Введите ИНН для проверки клиента на наличие данных</p>
@@ -477,7 +479,42 @@ export default function RequestBox() {
             </InnCheckContent>
             <ModalCloseButton w={10} h={10} size={5} />
           </ModalContent>
-        </Modal>
+        </Modal> */}
+        <>
+          <Modal
+            open={isModalOpen}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            cancelButtonProps={true}
+            footer={null}
+            width={650}
+            centered
+          >
+            <InnCheckContent>
+              <InnHorizontal>
+                {/* <Button
+                  w="55px"
+                  h="55px"
+                  borderRadius={100}
+                  justifySelf="flex-start"
+                  backgroundColor="#FAFAFA"
+                  _hover={{ backgroundColor: '#eaeaea' }}
+                >
+                  <div>
+                    <BsArrowLeftShort color="black" size="28px" />
+                  </div>
+                </Button> */}
+                <h1>Проверка клиента</h1>
+              </InnHorizontal>
+              <p>Введите ИНН для проверки клиента на наличие данных</p>
+              <label style={{ alignSelf: 'flex-start' }}>ИНН</label>
+              <Input size="large" />
+              <PrimaryBtn onClick={() => navigate('/client_check')}>
+                Продолжить
+              </PrimaryBtn>
+            </InnCheckContent>
+          </Modal>
+        </>
       </>
     </>
   );

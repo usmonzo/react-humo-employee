@@ -1,11 +1,12 @@
 import './App.css';
-import LoginPage from './pages/LoginPage';
-import MainPage from './pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import { Suspense } from 'react';
+import LoginPage from './pages/LoginPage';
+import MainPage from './pages/MainPage';
 import SuspenceFallback from './utils/SuspenceFallback';
 import ClientsCheckPage from './pages/ClientsCheckPage';
-import IdentificationHOPage from './pages/IdentificationHOPage';
+import IdentificationPage from './pages/IdentificationPage';
+import 'antd/dist/reset.css';
 
 function App() {
   return (
@@ -23,10 +24,10 @@ function App() {
             }
           />
           <Route
-            path="/identification"
+            path="/client_check/identification"
             element={
               // <PrivateRoute>
-              <IdentificationHOPage />
+              <IdentificationPage />
               // </PrivateRoute>
             }
           />
@@ -38,6 +39,7 @@ function App() {
               // </PrivateRoute>
             }
           />
+          <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </Suspense>
     </>

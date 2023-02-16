@@ -1,45 +1,30 @@
-import { Button } from '@chakra-ui/react';
 import { useState } from 'react';
-import { MdKeyboardArrowLeft } from 'react-icons/md';
-import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
-import { PrimaryBtn } from '../Buttons/PrimaryButton';
 import Footer from '../Footer/Footer(e)';
+import FirstStep from './FirstStep';
+import SecondStep from './SecondStep';
+import ThirdStep from './ThirdStep';
+import FourthStep from './FourthStep';
+import { MdKeyboardArrowLeft } from 'react-icons/md';
 import {
   FormContainer,
   FormContent,
-  FormHeadline,
-  FormInput,
-  FormLabel,
-  FormSelect,
-  GrayBlock,
-  HideBlock,
-  HideBlock2,
-  HideBlock3,
-  HideBlock4,
-  HideBlock5,
-  HideBlock6,
-  HideBlock7,
   Horizontal,
-  MiniFormContainer,
-  PrimaryText,
-  SecondaryText,
-  SlimText,
-  Vertical,
-  VerticalGroupClick,
-  WhiteContainer,
-  VerticalBtns,
-  RoundBtn,
-  ScoringBtn,
-  GrayLine,
-  ScoredData,
 } from './IdentificationsElements';
+import { Suspense } from 'react';
+import SuspenceFallback from '../../utils/SuspenceFallback';
+import { useNavigate } from 'react-router-dom';
+import { Button } from 'antd';
 
 const IdentificationBody = () => {
-  const [showClient, setShowClient] = useState(true);
-  const [showPassport, setShowPassport] = useState(true);
-  const [showRecommender, setShowRecommender] = useState(true);
-  const [showSecondRecommender, setShowSecondRecommender] = useState(true);
-
+  // const [steps, setSteps] = useState({
+  //   firstStep: true,
+  //   secondStep: false,
+  //   thirdStep: false,
+  //   fourthStep: false,
+  //   fifthStepL: false,
+  // });
+  const [steps, setSteps] = useState(1);
+  const navigate = useNavigate();
   return (
     <>
       <FormContainer>
@@ -51,211 +36,72 @@ const IdentificationBody = () => {
               gap: '30px',
               marginBottom: '26px',
               alignSelf: 'flex-start',
+              cursor: 'pointer',
+              alignItems: 'center',
             }}
+            onClick={() => navigate(-1)}
           >
             <Button
-              p={0}
-              w="50px"
-              h="50px"
-              borderRadius={100}
-              justifySelf="flex-start"
-              backgroundColor="#FAFAFA"
-              _hover={{ backgroundColor: '#eaeaea' }}
+              style={{
+                borderRadius: '50%',
+                height: '60px',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+              onClick={() => navigate(-1)}
             >
               <MdKeyboardArrowLeft color="black" size={30} />
             </Button>
             <h1>Идентификация Х.О</h1>
           </Horizontal>
-          <WhiteContainer id="client">
-            <VerticalGroupClick
-              onClick={() =>
-                showClient ? setShowClient(false) : setShowClient(true)
-              }
-            >
-              <FormHeadline>Информация о клиенте:</FormHeadline>
-              {!showClient ? (
-                <RiArrowDownSLine size={25} color="#00000099" />
-              ) : (
-                <RiArrowUpSLine size={25} color="#00000099" />
-              )}
-            </VerticalGroupClick>
-            <HideBlock show={showClient}>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Фамилия</FormLabel>
-                  <FormInput name="surname" />
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Имя</FormLabel>
-                  <FormInput name="name" />
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Отчество</FormLabel>
-                  <FormInput name="patronymic" />
-                </Vertical>
-              </Horizontal>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>ИНН</FormLabel>
-                  <FormInput type="text" />
-                </Vertical>
-              </Horizontal>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Номер телефона</FormLabel>
-                  <FormInput type="text" />
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Дата рождения</FormLabel>
-                  <FormInput type="date" />
-                </Vertical>
-              </Horizontal>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Пол</FormLabel>
-                  <FormSelect></FormSelect>
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Семейное положение</FormLabel>
-                  <FormSelect></FormSelect>
-                </Vertical>
-              </Horizontal>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>
-                    Количество людей зависящих от дохода этого клиента
-                  </FormLabel>
-                </Vertical>
-              </Horizontal>
-            </HideBlock>
-          </WhiteContainer>
-          <WhiteContainer id="passport_information">
-            <VerticalGroupClick
-              onClick={() =>
-                showPassport ? setShowPassport(false) : setShowPassport(true)
-              }
-            >
-              <FormHeadline>Паспортные данные:</FormHeadline>
-              {!showPassport ? (
-                <RiArrowDownSLine size={25} color="#00000099" />
-              ) : (
-                <RiArrowUpSLine size={25} color="#00000099" />
-              )}
-            </VerticalGroupClick>
-            <HideBlock show={showPassport}>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Серия(буква)</FormLabel>
-                  <FormInput name="surname" />
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Серия(номер)</FormLabel>
-                  <FormInput name="name" />
-                </Vertical>
-              </Horizontal>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Кем выдан паспорт</FormLabel>
-                  <FormInput type="text" />
-                </Vertical>
-              </Horizontal>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Дата выдачи</FormLabel>
-                  <FormInput type="date" />
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Срок окончания</FormLabel>
-                  <FormInput type="date" />
-                </Vertical>
-              </Horizontal>
-            </HideBlock>
-          </WhiteContainer>
-          <WhiteContainer id="first-recommender">
-            <VerticalGroupClick
-              onClick={() =>
-                showRecommender
-                  ? setShowRecommender(false)
-                  : setShowRecommender(true)
-              }
-            >
-              <FormHeadline>Рекомендатель 1</FormHeadline>
-              {!showRecommender ? (
-                <RiArrowDownSLine size={25} color="#00000099" />
-              ) : (
-                <RiArrowUpSLine size={25} color="#00000099" />
-              )}
-            </VerticalGroupClick>
-            <HideBlock show={showRecommender}>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Фамилия</FormLabel>
-                  <FormInput name="surname" />
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Имя</FormLabel>
-                  <FormInput name="name" />
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Отчество</FormLabel>
-                  <FormInput type="text" />
-                </Vertical>
-              </Horizontal>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Кем приходится</FormLabel>
-                  <FormSelect></FormSelect>
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Номер телефона</FormLabel>
-                  <FormInput></FormInput>
-                </Vertical>
-              </Horizontal>
-            </HideBlock>
-          </WhiteContainer>
-          <WhiteContainer id="second-recommender">
-            <VerticalGroupClick
-              onClick={() =>
-                showSecondRecommender
-                  ? setShowSecondRecommender(false)
-                  : setShowSecondRecommender(true)
-              }
-            >
-              <FormHeadline>Рекомендатель 2</FormHeadline>
-              {!showSecondRecommender ? (
-                <RiArrowDownSLine size={25} color="#00000099" />
-              ) : (
-                <RiArrowUpSLine size={25} color="#00000099" />
-              )}
-            </VerticalGroupClick>
-            <HideBlock show={showSecondRecommender}>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Фамилия</FormLabel>
-                  <FormInput name="surname" />
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Имя</FormLabel>
-                  <FormInput name="name" />
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Отчество</FormLabel>
-                  <FormInput type="text" />
-                </Vertical>
-              </Horizontal>
-              <Horizontal>
-                <Vertical>
-                  <FormLabel>Кем приходится</FormLabel>
-                  <FormSelect></FormSelect>
-                </Vertical>
-                <Vertical>
-                  <FormLabel>Номер телефона</FormLabel>
-                  <FormInput></FormInput>
-                </Vertical>
-              </Horizontal>
-            </HideBlock>
-          </WhiteContainer>
-          <PrimaryBtn>Далее</PrimaryBtn>
+          <div style={{ marginBottom: '15px', display: 'flex', gap: '10px' }}>
+            <Button
+              style={{
+                border: '1px solid #ff6200',
+                background: `${steps === 1 ? '#ff6200' : 'none'}`,
+                borderRadius: '100%',
+              }}
+              onClick={() => setSteps(1)}
+            ></Button>
+            <Button
+              style={{
+                background: `${steps === 2 ? '#ff6200' : 'none'}`,
+                border: '1px solid #ff6200',
+                borderRadius: '100%',
+              }}
+              onClick={() => setSteps(2)}
+            ></Button>
+            <Button
+              style={{
+                background: `${steps === 3 ? '#ff6200' : 'none'}`,
+                border: '1px solid #ff6200',
+                borderRadius: '100%',
+              }}
+              onClick={() => setSteps(3)}
+            ></Button>
+            <Button
+              style={{
+                background: `${steps === 4 ? '#ff6200' : 'none'}`,
+                border: '1px solid #ff6200',
+                borderRadius: '100%',
+              }}
+              onClick={() => setSteps(4)}
+            ></Button>
+            {console.log(steps)}
+          </div>
+          <Suspense fallback={<SuspenceFallback />}>
+            {steps === 1 ? (
+              <FirstStep />
+            ) : steps === 2 ? (
+              <SecondStep />
+            ) : steps === 3 ? (
+              <ThirdStep />
+            ) : steps === 4 ? (
+              <FourthStep />
+            ) : (
+              <FirstStep />
+            )}
+          </Suspense>
         </FormContent>
       </FormContainer>
       <Footer position="inherit" />

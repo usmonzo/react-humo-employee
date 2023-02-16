@@ -13,8 +13,9 @@ const NavbarContainer = styled.div`
   /* box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04); */
   border-bottom: 1px solid #e7e8ec;
 
-  @media screen and (max-width: 450px) {
-    display: none;
+  @media screen and (max-width: 768px) {
+    transition: 0.4s all ease-in-out;
+    margin-top: -130px;
   }
 `;
 

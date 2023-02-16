@@ -21,6 +21,11 @@ export const FooterContainer = styled.div`
   overflow: hidden;
   clear: both;
   margin-top: 100px;
+
+  @media screen and (max-width: 768px) {
+    transition: 0.4s all ease-in-out;
+    margin-bottom: -130px;
+  }
 `;
 
 export const FooterContent = styled.div`
